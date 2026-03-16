@@ -1,14 +1,19 @@
 ---
-- name: Mise à jour du système
+- name: Mise à jour du cache APT
   apt:
     update_cache: yes
-    upgrade: dist
+    cache_valid_time: 3600
 
-- name: Installation de logiciels de base
+- name: Installation des paquets système
   apt:
-    name:
-      - vim
-      - curl
-      - htop
-      - vlc
+    name: "{{ sys_packages }}"
     state: present
+
+- name: Configuration du fuseau horaire
+  timezone:
+    name: "Europe/Paris"
+
+- name: Personnalisation du message d'accueil (MOTD)
+  copy:
+    content: "Machine deployée par Hicham-FOG le {{ ansible_date_time.date }}\n"
+    dest: /etc/motd

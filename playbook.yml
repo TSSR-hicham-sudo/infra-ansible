@@ -1,8 +1,16 @@
 ---
-- name: Configuration de base post-FOG
+- name: Configuration Post-Déploiement FOG
   hosts: localhost
   connection: local
   become: yes
 
+  vars:
+    # On peut définir des variables ici ou dans group_vars/all.yml
+    sys_packages: [ 'Firefox', 'curl', 'git', 'vim', 'htop', 'vlc' ]
+
   roles:
     - common
+    - security
+    # On peut ajouter une condition pour n'installer le rôle desktop 
+    # que si une interface graphique est détectée
+    - { role: desktop, when: ansible_env.DISPLAY is defined }
