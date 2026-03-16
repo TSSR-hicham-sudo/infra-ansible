@@ -6,7 +6,7 @@
 
   vars:
     # On peut définir des variables ici ou dans group_vars/all.yml
-    sys_packages: [ 'firefox', 'curl', 'git', 'vim', 'htop', 'vlc' ]
+    sys_packages: [ 'nmap' ]
 
   roles:
     - common
