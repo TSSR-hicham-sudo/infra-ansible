@@ -1,0 +1,8 @@
+---
+- name: Configuration de base post-FOG
+  hosts: localhost
+  connection: local
+  become: yes
+
+  roles:
+    - common
