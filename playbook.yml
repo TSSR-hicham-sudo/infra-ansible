@@ -12,4 +12,3 @@
     - common
     # On peut ajouter une condition pour n'installer le rôle desktop 
     # que si une interface graphique est détectée
-    - { role: desktop, when: ansible_env.DISPLAY is defined }
